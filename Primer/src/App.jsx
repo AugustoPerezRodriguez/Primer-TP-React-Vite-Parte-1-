@@ -1,4 +1,3 @@
-import './App.css'
 import Header from './Header'
 import Formulario from './Formulario'
 import ListaCitas from './ListaCitas'

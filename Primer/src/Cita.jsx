@@ -1,3 +1,5 @@
+import './Cita.css'
+
 function Cita({ mascota, duenio, fecha, hora, sintomas }) {
   return (
     <div className="cita">

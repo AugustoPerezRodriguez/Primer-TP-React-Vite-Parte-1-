@@ -1,9 +1,10 @@
 import Campo from './Campo'
 import TextArea from './TextArea'
+import './Formulario.css'
 
 function Formulario() {
   return (
-    <>
+    <section className="formulario">
       <h2>Crear mi Cita</h2>
       <form>
         <Campo
@@ -25,7 +26,7 @@ function Formulario() {
           Agregar Cita
         </button>
       </form>
-    </>
+    </section>
   )
 }
 

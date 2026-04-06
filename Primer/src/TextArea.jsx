@@ -1,6 +1,8 @@
+import './TextArea.css'
+
 function TextArea({ label, name }) {
   return (
-    <div>
+    <div className="campo-texto">
       <label>{label}</label>
       <textarea
         name={name}

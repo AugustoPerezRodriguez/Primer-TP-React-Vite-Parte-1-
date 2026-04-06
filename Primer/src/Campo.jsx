@@ -1,8 +1,8 @@
-
+import './Campo.css'
 
 function Campo({ label, type, name, placeholder }) {
   return (
-    <div>
+    <div className="campo">
       <label>{label}</label>
       <input
         type={type}
