@@ -1,25 +1,32 @@
-
-import './App.css'
+import Campo from './Campo'
+import TextArea from './TextArea'
 
 function Formulario() {
   return (
-    <div class="one-half column">
-      <h2>Crear cita</h2>
-
-      <label>Nombre Mascota</label>
-      <input type="text" placeholder="Nombre de la mascota" class="u-full-width"/>
-      <label>Nombre Dueño</label>
-      <input type="text" placeholder="Nombre del dueño"  class="u-full-width"/>
-      <label>Fecha</label>
-      <input type="date" class="u-full-width"/>
-      <label>hora</label>
-      <input type="time"  class="u-full-width"/>
-      <label>Sintomas</label>
-      <textarea placeholder="sinntomas"  class="u-full-width"></textarea>
-
-      <button class="u-full-width button-primary">Agregar cita</button>
-    </div>
-  );
+    <>
+      <h2>Crear mi Cita</h2>
+      <form>
+        <Campo
+          label="Nombre Mascota"
+          type="text"
+          name="mascota"
+          placeholder="Nombre Mascota"
+        />
+        <Campo
+          label="Nombre Dueño"
+          type="text"
+          name="propietario"
+          placeholder="Nombre dueño de la mascota"
+        />
+        <Campo label="Fecha" type="date" name="fecha" />
+        <Campo label="hora" type="time" name="hora" />
+        <TextArea label="Sintomas" name="sintomas" />
+        <button type="submit" className="u-full-width button-primary">
+          Agregar Cita
+        </button>
+      </form>
+    </>
+  )
 }
 
-export default Formulario;
+export default Formulario
