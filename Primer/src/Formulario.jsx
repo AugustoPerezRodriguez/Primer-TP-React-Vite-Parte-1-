@@ -1,33 +1,52 @@
-import Campo from './Campo'
-import TextArea from './TextArea'
-import './Formulario.css'
+import { useState } from "react";
 
-function Formulario() {
+function Formulario({ setCitas }) {
+  const [cita, setCita] = useState({
+    mascota: "",
+    propietario: "",
+    fecha: "",
+    hora: "",
+    sintomas: ""
+  });
+
+  function handleChange(e) {
+    setCita({
+      ...cita,
+      [e.target.name]: e.target.value
+    });
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    setCitas(prev => [...prev, cita]);
+
+    setCita({
+      mascota: "",
+      propietario: "",
+      fecha: "",
+      hora: "",
+      sintomas: ""
+    });
+  }
+
   return (
-    <section className="formulario">
+    <>
       <h2>Crear mi Cita</h2>
-      <form>
-        <Campo
-          label="Nombre Mascota"
-          type="text"
-          name="mascota"
-          placeholder="Nombre Mascota"
-        />
-        <Campo
-          label="Nombre Dueño"
-          type="text"
-          name="propietario"
-          placeholder="Nombre dueño de la mascota"
-        />
-        <Campo label="Fecha" type="date" name="fecha" />
-        <Campo label="hora" type="time" name="hora" />
-        <TextArea label="Sintomas" name="sintomas" />
-        <button type="submit" className="u-full-width button-primary">
+
+      <form onSubmit={handleSubmit}>
+        <input name="mascota" value={cita.mascota} onChange={handleChange} placeholder="Mascota" className="u-full-width" />
+        <input name="propietario" value={cita.propietario} onChange={handleChange} placeholder="Dueño" className="u-full-width" />
+        <input type="date" name="fecha" value={cita.fecha} onChange={handleChange} className="u-full-width" />
+        <input type="time" name="hora" value={cita.hora} onChange={handleChange} className="u-full-width" />
+        <textarea name="sintomas" value={cita.sintomas} onChange={handleChange} className="u-full-width" />
+
+        <button className="u-full-width button-primary">
           Agregar Cita
         </button>
       </form>
-    </section>
-  )
+    </>
+  );
 }
 
-export default Formulario
+export default Formulario;
