@@ -1,4 +1,5 @@
 import Cita from "./Cita";
+import "./ListaCitas.css";
 
 function ListaCitas({ citas, setCitas }) {
 
@@ -11,19 +12,23 @@ function ListaCitas({ citas, setCitas }) {
   }
 
   return (
-    <>
+    <div className="lista-citas">
       <h2>Administra tus citas</h2>
 
-      {citas.length === 0 && <p>No hay citas</p>}
+      {citas.length === 0 && <p style={{ color: "white", textAlign: "center" }}>No hay citas</p>}
 
       {citas.map((cita, index) => (
         <Cita
           key={index}
-          {...cita}
+          mascota={cita.mascota}
+          propietario={cita.propietario}
+          fecha={cita.fecha}
+          hora={cita.hora}
+          sintomas={cita.sintomas}
           eliminar={() => eliminarCita(index)}
         />
       ))}
-    </>
+    </div>
   );
 }
 

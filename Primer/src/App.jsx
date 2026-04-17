@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Formulario from "./Formulario";
 import ListaCitas from "./ListaCitas";
+import Header from "./Header";
 
 function App() {
   const [citas, setCitas] = useState([]);
@@ -15,8 +16,8 @@ function App() {
 
   return (
     <div className="container">
+      <Header /> 
       <div className="row">
-        
         <div className="one-half column">
           <Formulario setCitas={setCitas} />
         </div>
@@ -24,7 +25,6 @@ function App() {
         <div className="one-half column">
           <ListaCitas citas={citas} setCitas={setCitas} />
         </div>
-
       </div>
     </div>
   );

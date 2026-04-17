@@ -1,4 +1,7 @@
 import { useState } from "react";
+import Campo from "./Campo";
+import TextArea from "./TextArea";
+import "./Formulario.css";
 
 function Formulario({ setCitas }) {
   const [cita, setCita] = useState({
@@ -18,6 +21,10 @@ function Formulario({ setCitas }) {
 
   function handleSubmit(e) {
     e.preventDefault();
+    if (Object.values(cita).some(val => val.trim() === "")) {
+      alert("Todos los campos son obligatorios");
+      return;
+    }
 
     setCitas(prev => [...prev, cita]);
 
@@ -31,21 +38,58 @@ function Formulario({ setCitas }) {
   }
 
   return (
-    <>
+    <div className="formulario">
       <h2>Crear mi Cita</h2>
 
       <form onSubmit={handleSubmit}>
-        <input name="mascota" value={cita.mascota} onChange={handleChange} placeholder="Mascota" className="u-full-width" />
-        <input name="propietario" value={cita.propietario} onChange={handleChange} placeholder="Dueño" className="u-full-width" />
-        <input type="date" name="fecha" value={cita.fecha} onChange={handleChange} className="u-full-width" />
-        <input type="time" name="hora" value={cita.hora} onChange={handleChange} className="u-full-width" />
-        <textarea name="sintomas" value={cita.sintomas} onChange={handleChange} className="u-full-width" />
+        <Campo
+          label="Mascota"
+          type="text"
+          name="mascota"
+          placeholder="Nombre Mascota"
+          value={cita.mascota}
+          onChange={handleChange}
+        />
 
-        <button className="u-full-width button-primary">
+        <Campo
+          label="Dueño"
+          type="text"
+          name="propietario"
+          placeholder="Nombre dueño de la mascota"
+          value={cita.propietario}
+          onChange={handleChange}
+        />
+
+        <Campo
+          label="Fecha"
+          type="date"
+          name="fecha"
+          placeholder="dd/mm/aaaa"
+          value={cita.fecha}
+          onChange={handleChange}
+        />
+
+        <Campo
+          label="hora"
+          type="time"
+          name="hora"
+          placeholder="--:--"
+          value={cita.hora}
+          onChange={handleChange}
+        />
+
+        <TextArea
+          label="Síntomas"
+          name="sintomas"
+          value={cita.sintomas}
+          onChange={handleChange}
+        />
+
+        <button type="submit" className="u-full-width button-primary">
           Agregar Cita
         </button>
       </form>
-    </>
+    </div>
   );
 }
 

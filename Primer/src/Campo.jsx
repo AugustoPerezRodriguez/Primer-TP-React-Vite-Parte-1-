@@ -1,6 +1,6 @@
 import './Campo.css'
 
-function Campo({ label, type, name, placeholder }) {
+function Campo({ label, type, name, placeholder, value, onChange }) {
   return (
     <div className="campo">
       <label>{label}</label>
@@ -9,6 +9,8 @@ function Campo({ label, type, name, placeholder }) {
         name={name}
         placeholder={placeholder}
         className="u-full-width"
+        value={value}
+        onChange={onChange}
       />
     </div>
   );
